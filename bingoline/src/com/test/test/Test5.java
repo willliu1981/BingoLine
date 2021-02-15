@@ -1,5 +1,6 @@
 package com.test.test;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,6 +59,20 @@ public class Test5 {
 		b1.setPoint(5,5);
 		map.put(b1, 50);
 		System.out.println(map);
+		
+		int[] ii= {2,4,1,6,4,7};
+		
+		int sum=Arrays.stream(ii).reduce(0, (a,b)->a+b);
+		
+		
+		
+				/*
+		int sum=Arrays.asList(ii).stream().reduce(0, (x,y)->{
+			return x+y;
+		});
+		*///
+				
+		System.out.println(sum);
 		
 		
 	}

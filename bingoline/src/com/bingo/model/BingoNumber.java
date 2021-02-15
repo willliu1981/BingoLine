@@ -4,10 +4,26 @@ import java.awt.Point;
 
 public class BingoNumber {
 	private Integer number;
-	private Point point = new Point(-1, -1);
+	private Point point;
 	private Boolean check;
 
-	public static void swap(BingoNumber b1, BingoNumber b2) {
+	public BingoNumber() {
+		this.number = 0;
+		this.point = new Point(0, 0);
+		this.check = false;
+	}
+
+	public BingoNumber(Integer num) {
+		this();
+		this.number = num;
+	}
+
+	public BingoNumber(Integer num, int x, int y) {
+		this(num);
+		this.setPoint(x, y);
+	}
+
+	public static void swapPoint(BingoNumber b1, BingoNumber b2) {
 		Point temp = b1.point;
 		b1.point = b2.point;
 		b2.point = temp;

@@ -32,6 +32,7 @@ import java.awt.GridLayout;
 
 public class MainFrame extends JFrame {
 	private JPanel panel;
+	private PlayView panel_play_view;
 
 	/**
 	 * Launch the application.
@@ -91,7 +92,7 @@ public class MainFrame extends JFrame {
 		panel.add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(new BorderLayout(0, 0));
 
-		PlayView panel_play_view = new PlayView();
+		panel_play_view = new PlayView();
 		panel_1.add(panel_play_view);
 
 		JPanel panel_2 = new JPanel();
@@ -112,7 +113,7 @@ public class MainFrame extends JFrame {
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		contentPane.add(panel_top_slat, BorderLayout.NORTH);
 
-		JButton btnNewButton = new JButton("Repaint");
+		JButton btnNewButton = new JButton("Ruffle");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				repaint_grid(evt);
@@ -138,8 +139,8 @@ public class MainFrame extends JFrame {
 	}
 
 	private void repaint_grid(ActionEvent evt) {
-
-
+		this.panel_play_view.ruffle();
+		this.panel_play_view.repaint();
 	}
 
 }
