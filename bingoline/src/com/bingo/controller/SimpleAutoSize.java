@@ -37,7 +37,7 @@ public class SimpleAutoSize {
 					.getLayout()).setHgap(gap + offset);
 		} else {
 			int offset = scale.getInnerH() - scale.getInnerW();
-			System.out.println("xxxx2:"+scale.getComponent().getWidth());
+			System.out.println("xxxx2:" + scale.getComponent().getWidth());
 			offset /= 2;
 			((FlowLayout) ((JPanel) ((BorderLayout) outer.getLayout()).getLayoutComponent(BorderLayout.NORTH))
 					.getLayout()).setVgap(gap + offset);
@@ -45,6 +45,10 @@ public class SimpleAutoSize {
 					.getLayout()).setVgap(gap + offset);
 		}
 		outer.revalidate();
+	}
+
+	public static int getSlatWidth(int width, int quantity, int gap) {
+		return (width - gap * (quantity + 1)) / quantity;
 	}
 
 	/*
