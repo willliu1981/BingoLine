@@ -28,7 +28,7 @@ public class PlayView extends JPanel {
 		
 		
 		g.setColor(Color.green);
-		g.fillRoundRect(scale.getX1()+10, scale.getY1()+10, scale.getW()-20, scale.getH()-20,10,10);
+		g.fillRoundRect(scale.getX1()+10, scale.getY1()+10, scale.getInnerW()-20, scale.getInnerH()-20,10,10);
 		
 		
 		

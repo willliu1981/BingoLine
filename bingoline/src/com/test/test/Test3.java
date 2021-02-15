@@ -19,7 +19,7 @@ public class Test3 {
 		
 		Car[] cars= {new Car("c1"),new Car("c2")};
 		
-		Arrays.asList(cars).forEach(System.out::println);
+		Arrays.asList(cars).stream().forEach(System.out::println);
 		
 	}
 

@@ -1,5 +1,6 @@
 package com.tool.graphic;
 
+import java.awt.Component;
 
 import javax.swing.JComponent;
 
@@ -15,7 +16,7 @@ public class GraphicScale {
 	}
 
 	public int getX2() {
-		return comp.getInsets().left + this.getW();
+		return comp.getInsets().left + this.getInnerW();
 	}
 
 	public int getY1() {
@@ -23,15 +24,27 @@ public class GraphicScale {
 	}
 
 	public int getY2() {
-		return comp.getInsets().top + this.getH();
+		return comp.getInsets().top + this.getInnerH();
 	}
 
-	public int getW() {
+	public int getInnerW() {
 		return comp.getWidth() - (comp.getInsets().left + comp.getInsets().right);
 	}
 
-	public int getH() {
+	public int getInnerH() {
 		return comp.getHeight() - (comp.getInsets().top + comp.getInsets().bottom);
+	}
+
+	public int getComponentW() {
+		return this.comp.getWidth();
+	}
+
+	public int getComponentH() {
+		return this.comp.getHeight();
+	}
+	
+	public JComponent getComponent() {
+		return this.comp;
 	}
 
 }

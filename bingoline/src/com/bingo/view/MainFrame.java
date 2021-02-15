@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.bingo.controller.SimpleAutoSize;
+
 import java.awt.CardLayout;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -17,14 +20,17 @@ import java.awt.FlowLayout;
 import javax.swing.SwingConstants;
 import java.awt.Rectangle;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.BoxLayout;
 import java.awt.GridLayout;
 
 public class MainFrame extends JFrame {
+	private JPanel panel;
 
 	/**
 	 * Launch the application.
@@ -47,7 +53,7 @@ public class MainFrame extends JFrame {
 	 */
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 615, 573);
+		setBounds(100, 100, 615, 585);
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -70,7 +76,13 @@ public class MainFrame extends JFrame {
 		contentPane.add(panel_main_slat, BorderLayout.CENTER);
 		panel_main_slat.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel = new JPanel();
+		panel = new JPanel() {
+			@Override
+			protected void paintComponent(Graphics arg0) {
+				super.paintComponent(arg0);
+				SimpleAutoSize.autoSize(this, 5);
+			}
+		};
 		panel_main_slat.add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
 		
@@ -82,6 +94,7 @@ public class MainFrame extends JFrame {
 		panel_1.add(panel_play_view);
 		
 		JPanel panel_2 = new JPanel();
+		FlowLayout flowLayout_1 = (FlowLayout) panel_2.getLayout();
 		panel.add(panel_2, BorderLayout.NORTH);
 		
 		JPanel panel_3 = new JPanel();
@@ -92,7 +105,7 @@ public class MainFrame extends JFrame {
 		
 		JPanel panel_5 = new JPanel();
 		panel.add(panel_5, BorderLayout.WEST);
-
+		
 		JPanel panel_top_slat = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel_top_slat.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
@@ -120,10 +133,11 @@ public class MainFrame extends JFrame {
 		JLabel lblNewLabel = new JLabel("copyright since 2021");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_bottom_slat.add(lblNewLabel);
+		
 	}
 
 	private void repaint_grid(ActionEvent evt) {
-
+		
 	}
 
 }
