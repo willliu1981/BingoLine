@@ -21,8 +21,10 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.BoxLayout;
+import java.awt.GridLayout;
 
-public class MainView extends JFrame {
+public class MainFrame extends JFrame {
 
 	/**
 	 * Launch the application.
@@ -31,7 +33,7 @@ public class MainView extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainView frame = new MainView();
+					MainFrame frame = new MainFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +45,7 @@ public class MainView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainView() {
+	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 615, 573);
 
@@ -67,28 +69,29 @@ public class MainView extends JFrame {
 		panel_main_slat.setBackground(Color.BLACK);
 		contentPane.add(panel_main_slat, BorderLayout.CENTER);
 		panel_main_slat.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel panel = new JPanel();
-		panel_main_slat.add(panel, BorderLayout.WEST);
+		panel_main_slat.add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		PlayView panel_play_view_0 = new PlayView();
-		panel.add(panel_play_view_0);
-		
-		PlayView panel_play_view_1 = new PlayView();
-		panel.add(panel_play_view_1);
-		
-		PlayView panel_play_view_2 = new PlayView();
-		panel.add(panel_play_view_2);
-		
-		PlayView panel_play_view_3 = new PlayView();
-		panel.add(panel_play_view_3);
-		
-		PlayView panel_play_view_4 = new PlayView();
-		panel.add(panel_play_view_4);
+		JPanel panel_1 = new JPanel();
+		panel.add(panel_1, BorderLayout.CENTER);
+		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		PlayView panel_play_view = new PlayView();
-		panel_main_slat.add(panel_play_view, BorderLayout.CENTER);
+		panel_1.add(panel_play_view);
+		
+		JPanel panel_2 = new JPanel();
+		panel.add(panel_2, BorderLayout.NORTH);
+		
+		JPanel panel_3 = new JPanel();
+		panel.add(panel_3, BorderLayout.SOUTH);
+		
+		JPanel panel_4 = new JPanel();
+		panel.add(panel_4, BorderLayout.EAST);
+		
+		JPanel panel_5 = new JPanel();
+		panel.add(panel_5, BorderLayout.WEST);
 
 		JPanel panel_top_slat = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel_top_slat.getLayout();
@@ -120,7 +123,7 @@ public class MainView extends JFrame {
 	}
 
 	private void repaint_grid(ActionEvent evt) {
-		
+
 	}
 
 }

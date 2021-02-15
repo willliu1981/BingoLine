@@ -1,11 +1,11 @@
 package com.bingo.main;
 
-import com.bingo.view.MainView;
+import com.bingo.view.MainFrame;
 
 public class Main {
 
 	public static void main(String[] args) {
-		MainView view=new MainView();
+		MainFrame view=new MainFrame();
 		view.setVisible(true);
 	}	
 

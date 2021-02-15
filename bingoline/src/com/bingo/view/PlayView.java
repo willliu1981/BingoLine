@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import com.tool.graphic.GraphicScale;
 import java.awt.FlowLayout;
+import java.awt.Rectangle;
 
 public class PlayView extends JPanel {
 
@@ -14,6 +15,7 @@ public class PlayView extends JPanel {
 	 * Create the panel.
 	 */
 	public PlayView() {
+		setBounds(new Rectangle(0, 0, 200, 200));
 		setBackground(Color.ORANGE);
 		FlowLayout flowLayout = (FlowLayout) getLayout();
 
