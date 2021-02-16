@@ -1,4 +1,4 @@
-package com.bingo.controller;
+package com.tool.graphic;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -11,8 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.JPanel;
-
-import com.tool.graphic.GraphicScale;
 
 public class SimpleAutoSize {
 	private final static String[] constrains = { BorderLayout.NORTH, BorderLayout.EAST, BorderLayout.WEST,

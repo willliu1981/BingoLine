@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.bingo.controller.SimpleAutoSize;
+import com.tool.graphic.SimpleAutoSize;
 
 import java.awt.CardLayout;
 import javax.swing.JMenuBar;
@@ -29,10 +29,14 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.BoxLayout;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MainFrame extends JFrame {
 	private JPanel panel;
 	private PlayView panel_play_view;
+	private JButton btnNewButton_ruffle;
+	private JButton btnNewButton_custom;
 
 	/**
 	 * Launch the application.
@@ -112,27 +116,41 @@ public class MainFrame extends JFrame {
 		FlowLayout flowLayout = (FlowLayout) panel_top_slat.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		contentPane.add(panel_top_slat, BorderLayout.NORTH);
-
-		JButton btnNewButton = new JButton("Ruffle");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnNewButton_ruffle = new JButton("Ruffle");
+		btnNewButton_ruffle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				repaint_grid(evt);
 			}
 		});
-		panel_top_slat.add(btnNewButton);
+		panel_top_slat.add(btnNewButton_ruffle);
 
-		JButton btnNewButton_1 = new JButton("New button");
+		JButton btnNewButton_1 = new JButton("Ready");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if (btnNewButton_ruffle.isEnabled()) {
+					btnNewButton_1.setText("Unready");
+					btnNewButton_ruffle.setEnabled(false);
+					btnNewButton_custom.setEnabled(false);
+				} else {
+					btnNewButton_1.setText("Ready");
+					btnNewButton_ruffle.setEnabled(true);
+					btnNewButton_custom.setEnabled(true);
+				}
+
+			}
+		});
+
+		btnNewButton_custom = new JButton("Custom");
+		panel_top_slat.add(btnNewButton_custom);
 		panel_top_slat.add(btnNewButton_1);
-
-		JButton btnNewButton_2 = new JButton("New button");
-		panel_top_slat.add(btnNewButton_2);
 
 		JPanel panel_bottom_slat = new JPanel();
 		panel_bottom_slat.setPreferredSize(new Dimension(10, 30));
 		contentPane.add(panel_bottom_slat, BorderLayout.SOUTH);
 		panel_bottom_slat.setLayout(new BorderLayout(0, 0));
 
-		JLabel lblNewLabel = new JLabel("copyright since 2021");
+		JLabel lblNewLabel = new JLabel("Copyright© since 2021");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_bottom_slat.add(lblNewLabel);
 

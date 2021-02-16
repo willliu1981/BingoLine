@@ -11,9 +11,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.swing.JPanel;
 
-import com.bingo.controller.SimpleAutoSize;
 import com.bingo.model.BingoNumber;
-import com.tool.graphic.GraphicScale;
+import com.tool.graphic.Draws;
 
 public class PlayView extends JPanel {
 	private Map<Integer, BingoNumber> numbers = new HashMap<>();
@@ -58,37 +57,26 @@ public class PlayView extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		GraphicScale scale = new GraphicScale(this);
-		int outer_gap = 20;
-		int inner_gap = 10;
-		int outer_arc = 10;
-		int inner_arc = 5;
-		int slatWidth = 1 + SimpleAutoSize.getSlatWidth(scale.getInnerH() - outer_gap * 2, 5, inner_gap);
+		Draws draws = new Draws(this);
+		draws.setOuter_gap(20);
+		draws.setInner_gap(10);
+		draws.setOuter_arc(10);
+		draws.setInner_arc(5);
+		draws.setSlatWidth(5, 1);
+
 		g.setColor(Color.green);
-		g.fillRoundRect(scale.getX1() + outer_gap, scale.getY1() + outer_gap, scale.getInnerW() - outer_gap * 2,
-				scale.getInnerH() - outer_gap * 2, outer_arc, outer_arc);
+		g.fillRoundRect(draws.getX1() + draws.getOuter_gap(), draws.getY1() + draws.getOuter_gap(),
+				draws.getInnerW() - draws.getOuter_gap() * 2, draws.getInnerH() - draws.getOuter_gap() * 2,
+				draws.getOuter_arc(), draws.getOuter_arc());
 		// 畫格子
 		g.setColor(Color.black);
-		for (int y = 0; y < 5; y++) {
-			for (int x = 0; x < 5; x++) {
-				g.fillRoundRect(outer_gap + inner_gap + x * (slatWidth + inner_gap),
-						outer_gap + inner_gap + +y * (slatWidth + inner_gap), slatWidth, slatWidth, inner_arc,
-						inner_arc);
-			}
-		}
+		draws.drawChecker(g);
+
 		// 畫數字
 		g.setColor(Color.white);
 		g.setFont(new Font(g.getFont().getName(), Font.BOLD, 28));
-		BingoNumber nums[] = new BingoNumber[25];
-		this.numbers.values().iterator().forEachRemaining(x -> {
-			int fix_x = -28;
-			int fix_w = -0;
-			int fix_unit_w = 8;
-			g.drawString(x.getNumber().toString(),
-					(x.getNumber() < 10 ? fix_unit_w : 0) + fix_x + x.getPoint().x * (fix_w + inner_gap + slatWidth),
-					x.getPoint().y * (inner_gap + slatWidth));
+		draws.drawNumber(g, numbers, -28, 0, 8);
 
-		});
 	}
 
 }
